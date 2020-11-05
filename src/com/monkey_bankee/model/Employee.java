@@ -1,5 +1,8 @@
 package com.monkey_bankee.model;
 
+import sun.util.resources.cldr.am.TimeZoneNames_am;
+
+import java.sql.Timestamp;
 import java.util.Date;
 
 
@@ -26,8 +29,8 @@ public class Employee {
     }
 
     private String employee_tel;
-    private Date created_at;
-    private Date modified_at;
+    private Timestamp created_at;
+    private Timestamp modified_at;
 
     public int getEmployee_id() {
         return employee_id;
@@ -85,24 +88,25 @@ public class Employee {
         this.employee_tel = employee_tel;
     }
 
-    public Date getCreated_at() {
+    public Timestamp getCreated_at() {
         return created_at;
     }
 
-    public void setCreated_at(Date created_at) {
+    public void setCreated_at(Timestamp created_at) {
         this.created_at = created_at;
     }
 
-    public Date getModified_at() {
+    public Timestamp getModified_at() {
         return modified_at;
     }
 
-    public void setModified_at(Date modified_at) {
+    public void setModified_at(Timestamp modified_at) {
         this.modified_at = modified_at;
     }
 
     @Override
     public String toString() {
+        created_at = new Timestamp(System.currentTimeMillis());
         return "\nDate de création : " + created_at + "\nNom de l'employé : " + employee_nom + " " + employee_prenom + "\nTravail à la banque de " + employee_ville +
                 "\nJoignable au " + employee_tel + " ou à l'adresse mail suivante : " + login;
     }

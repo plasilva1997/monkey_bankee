@@ -40,8 +40,6 @@ public class EmployeeDAOImpl extends DBUtil implements EmployeeDAO {
                 }
                 sb.append(Long.toString(encodedPassword[i] & 0xff, 16));
             }
-            java.util.Date date_util = new java.util.Date();
-            java.sql.Date date_sql = new java.sql.Date(date_util.getTime());
             // set all the preparedstatement parameters
             PreparedStatement st = getConnection().prepareStatement(query);
             st.setString(1, employee.getEmployee_nom());
@@ -50,7 +48,7 @@ public class EmployeeDAOImpl extends DBUtil implements EmployeeDAO {
             st.setString(4, employee.getLogin());
             st.setString(5, sb.toString());
             st.setString(6, employee.getEmployee_tel());
-            st.setDate(7,  date_sql);
+            st.setTimestamp(7, new java.sql.Timestamp(new java.util.Date().getTime()));
 
             //st.executeUpdate();
 
@@ -125,7 +123,7 @@ public class EmployeeDAOImpl extends DBUtil implements EmployeeDAO {
         employee.setEmployee_ville(rs.getString("city_bank"));
         employee.setLogin(rs.getString("login"));
         employee.setEmployee_tel(rs.getString("tel"));
-        employee.setCreated_at(rs.getDate("created_at"));
+        employee.setCreated_at(rs.getTimestamp("created_at"));
 
         return employee;
     }

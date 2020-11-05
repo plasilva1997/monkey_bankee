@@ -17,10 +17,16 @@ public class Launcher {
             employees.forEach(System.out::println);
 
             //Test add
-            java.util.Date date_util = new java.util.Date();
-            java.sql.Date date_sql = new java.sql.Date(date_util.getTime());
 
-            SingleDAO.getEmployeeDAO().addEmployee(new Employee(0, "Robert", "Bob", "Marseille", "bb@gmail.com", "bob", "025488569"));
+            SingleDAO.getEmployeeDAO().addEmployee(new Employee(
+                    0,
+                    "Robert",
+                    "Bob",
+                    "Marseille",
+                    "bb@gmail.com",
+                    "bob",
+                    "025488569"
+            ));
         } catch (SQLException ex) {
             Logger.getLogger(Launcher.class.getName()).log(Level.SEVERE, null, ex);
         }
