@@ -1,8 +1,9 @@
 package com.monkey_bankee;
 
+import com.monkey_bankee.gui.MainFrameTable;
 import com.monkey_bankee.model.*;
 import com.monkey_bankee.dao.SingleDAO;
-import com.monkey_bankee.gui.MainFrame;
+import com.monkey_bankee.gui.MainFrameList;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -16,7 +17,7 @@ public class Launcher {
         try {
             ArrayList<Employee> employees = SingleDAO.getEmployeeDAO().getAllEmployee();
             employees.forEach(System.out::println);
-            MainFrame mf = new MainFrame(employees);
+            MainFrameTable mf = new MainFrameTable(employees);
             //Test add
             /*SingleDAO.getEmployeeDAO().addEmployee(new Employee(
                     0,

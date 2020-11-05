@@ -1,9 +1,9 @@
 package com.monkey_bankee.model;
 
-import sun.util.resources.cldr.am.TimeZoneNames_am;
-
+import javax.swing.table.AbstractTableModel;
 import java.sql.Timestamp;
-import java.util.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class Employee {
@@ -15,7 +15,7 @@ public class Employee {
     private String login;
     private String password;
 
-    public Employee(){
+    public Employee() {
     }
 
     public Employee(int employee_id, String employee_nom, String employee_prenom, String employee_ville, String login, String password, String employee_tel) {
@@ -106,8 +106,66 @@ public class Employee {
 
     @Override
     public String toString() {
-        return "\nDate de création : " + created_at + "\nNom de l'employé : " + employee_nom + " " + employee_prenom + "\nTravail à la banque de " + employee_ville +
-                "\nJoignable au " + employee_tel + " ou à l'adresse mail suivante : " + login;
+        return "Employee{" +
+                "employee_id=" + employee_id +
+                ", employee_nom='" + employee_nom + '\'' +
+                ", employee_prenom='" + employee_prenom + '\'' +
+                ", employee_ville='" + employee_ville + '\'' +
+                ", login='" + login + '\'' +
+                ", employee_tel='" + employee_tel + '\'' +
+                ", created_at=" + created_at +
+                '}';
+    }
+
+    //TEST TABLEAU
+
+    public class TableModel extends AbstractTableModel {
+
+        private final String[] Titres = {
+                "ID",
+                "Nom Employe",
+                "Prenom Employe",
+                "Ville Banque",
+                "Adresse Mail",
+                "N° Telephone"
+        };
+
+        private final List Employees = new ArrayList();
+
+        @Override
+        public int getRowCount() {
+            return Employees.size();
+        }
+
+        @Override
+        public int getColumnCount() {
+            return Titres.length;
+        }
+
+        @Override
+        public String getColumnName(int column) {
+            return Titres[column];
+        }
+
+        @Override
+        public Object getValueAt(int row, int column) {
+            switch (column) {
+                case 0:
+                    return employee_id;
+                case 1:
+                    return employee_nom;
+                case 2:
+                    return employee_prenom;
+                case 3:
+                    return employee_ville;
+                case 4:
+                    return login;
+                case 5:
+                    return employee_tel;
+                default:
+                    return "";
+            }
+        }
     }
 }
 

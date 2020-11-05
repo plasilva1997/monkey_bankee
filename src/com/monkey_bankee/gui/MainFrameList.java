@@ -5,8 +5,6 @@ import com.monkey_bankee.dao.SingleDAO;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -16,17 +14,15 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JList;
 import javax.swing.JPanel;
-import javax.swing.ListModel;
-import javax.swing.SwingUtilities;
 
-public class MainFrame extends JFrame {
+public class MainFrameList extends JFrame {
 
     private ArrayList<Employee> employees;
     private JPanel panel;
     private JButton addEmployeeBtn;
     private DefaultListModel model = new DefaultListModel();
 
-    public MainFrame(ArrayList<Employee> employees) {
+    public MainFrameList(ArrayList<Employee> employees) {
         super();
         setVisible(true);
         setTitle("Les Banquiers");
@@ -54,11 +50,11 @@ public class MainFrame extends JFrame {
             //initComponent();
             //SwingUtilities.updateComponentTreeUI(this);
         } catch (SQLException ex) {
-            Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(MainFrameList.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-    public MainFrame getThis() {
+    public MainFrameList getThis() {
         return this;
     }
 }
