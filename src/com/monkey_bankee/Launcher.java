@@ -2,6 +2,7 @@ package com.monkey_bankee;
 
 import com.monkey_bankee.model.*;
 import com.monkey_bankee.dao.SingleDAO;
+import com.monkey_bankee.gui.MainFrame;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -15,10 +16,9 @@ public class Launcher {
         try {
             ArrayList<Employee> employees = SingleDAO.getEmployeeDAO().getAllEmployee();
             employees.forEach(System.out::println);
-
+            MainFrame mf = new MainFrame(employees);
             //Test add
-
-            SingleDAO.getEmployeeDAO().addEmployee(new Employee(
+            /*SingleDAO.getEmployeeDAO().addEmployee(new Employee(
                     0,
                     "Robert",
                     "Bob",
@@ -26,7 +26,7 @@ public class Launcher {
                     "bb@gmail.com",
                     "bob",
                     "025488569"
-            ));
+            ));*/
         } catch (SQLException ex) {
             Logger.getLogger(Launcher.class.getName()).log(Level.SEVERE, null, ex);
         }

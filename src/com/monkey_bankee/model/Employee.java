@@ -106,7 +106,6 @@ public class Employee {
 
     @Override
     public String toString() {
-        created_at = new Timestamp(System.currentTimeMillis());
         return "\nDate de création : " + created_at + "\nNom de l'employé : " + employee_nom + " " + employee_prenom + "\nTravail à la banque de " + employee_ville +
                 "\nJoignable au " + employee_tel + " ou à l'adresse mail suivante : " + login;
     }
