@@ -110,5 +110,5 @@ $RECYCLE.BIN/
 # End of https://www.toptal.com/developers/gitignore/api/java,java-web,code-java,windows,linux,macos
 
 
-src/com/monkeybankee/util/*.java
+src/com/monkey_bankee/util/*.java
 idea/libraries/
