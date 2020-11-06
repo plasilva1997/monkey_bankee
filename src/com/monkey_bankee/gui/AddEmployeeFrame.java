@@ -78,12 +78,15 @@ public class AddEmployeeFrame extends JFrame {
         save.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                Employee employee = new Employee();
+
                 employee.setEmployee_nom(nom.getText());
                 employee.setEmployee_prenom(prenom.getText());
                 employee.setEmployee_ville(ville.getText());
                 employee.setLogin(login.getText());
                 employee.setPassword(String.valueOf(password.getPassword()));
                 employee.setEmployee_tel(tel.getText());
+                employee.setCreated_at(new java.sql.Timestamp(new java.util.Date().getTime()));
                 try {
                     if (password.getPassword() == passwordConfirm.getPassword()){
                         FactoryDAO.getEmployeeDAO().addEmployee(employee);
