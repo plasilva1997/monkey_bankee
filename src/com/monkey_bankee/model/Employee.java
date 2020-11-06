@@ -1,6 +1,9 @@
 package com.monkey_bankee.model;
 
+import com.monkey_bankee.dao.SingleDAO;
+
 import javax.swing.table.AbstractTableModel;
+import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
@@ -115,57 +118,6 @@ public class Employee {
                 ", employee_tel='" + employee_tel + '\'' +
                 ", created_at=" + created_at +
                 '}';
-    }
-
-    //TEST TABLEAU
-
-    public class TableModel extends AbstractTableModel {
-
-        private final String[] Titres = {
-                "ID",
-                "Nom Employe",
-                "Prenom Employe",
-                "Ville Banque",
-                "Adresse Mail",
-                "N° Telephone"
-        };
-
-        private final List Employees = new ArrayList();
-
-        @Override
-        public int getRowCount() {
-            return Employees.size();
-        }
-
-        @Override
-        public int getColumnCount() {
-            return Titres.length;
-        }
-
-        @Override
-        public String getColumnName(int column) {
-            return Titres[column];
-        }
-
-        @Override
-        public Object getValueAt(int row, int column) {
-            switch (column) {
-                case 0:
-                    return employee_id;
-                case 1:
-                    return employee_nom;
-                case 2:
-                    return employee_prenom;
-                case 3:
-                    return employee_ville;
-                case 4:
-                    return login;
-                case 5:
-                    return employee_tel;
-                default:
-                    return "";
-            }
-        }
     }
 }
 
