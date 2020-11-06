@@ -1,12 +1,6 @@
 package com.monkey_bankee.model;
 
-import com.monkey_bankee.dao.SingleDAO;
-
-import javax.swing.table.AbstractTableModel;
-import java.sql.SQLException;
 import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.List;
 
 
 public class Employee {

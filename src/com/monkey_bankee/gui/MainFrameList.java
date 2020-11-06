@@ -1,7 +1,7 @@
 package com.monkey_bankee.gui;
 
+import com.monkey_bankee.dao.FactoryDAO;
 import com.monkey_bankee.model.Employee;
-import com.monkey_bankee.dao.SingleDAO;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -26,8 +26,8 @@ public class MainFrameList extends JFrame {
         super();
         setVisible(true);
         setTitle("Les Banquiers");
-        setBounds(200, 200, 450, 600);
-        setMinimumSize(new Dimension(300, 300));
+        setBounds(200, 200, 600, 400);
+        setMinimumSize(new Dimension(300, 200));
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.employees = employees;
         initComponent();
@@ -45,7 +45,7 @@ public class MainFrameList extends JFrame {
 
     public void refresh() {
         try {
-            employees = SingleDAO.getEmployeeDAO().getAllEmployee();
+            employees = FactoryDAO.getEmployeeDAO().getAllEmployee();
             model.addElement(employees.get(employees.size() - 1));
             //initComponent();
             //SwingUtilities.updateComponentTreeUI(this);

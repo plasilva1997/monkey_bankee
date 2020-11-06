@@ -1,14 +1,14 @@
 package com.monkey_bankee.gui;
 
 
-import com.monkey_bankee.dao.EmployeeDAO;
-import com.monkey_bankee.dao.impl.EmployeeDAOImpl;
+import com.monkey_bankee.dao.FactoryDAO;
 import com.monkey_bankee.model.Employee;
-import com.monkey_bankee.dao.SingleDAO;
 import com.monkey_bankee.model.EmployeeTable;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -18,12 +18,14 @@ public class MainFrameTable extends JFrame {
     private JPanel panel;
     private JTable table;
     private EmployeeTable model;
+    private Employee newEmployee;
+    private JButton addEmployeeBtn;
 
     public MainFrameTable(ArrayList<Employee> employees){
         super();
         setVisible(true);
         setTitle("Les Banquiers");
-        setBounds(200, 200, 450, 600);
+        setBounds(200, 200, 800, 600);
         setMinimumSize(new Dimension(300, 300));
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.employees = employees;
@@ -36,16 +38,33 @@ public class MainFrameTable extends JFrame {
 
     private void initComponent() throws SQLException {
         this.panel = new JPanel(new BorderLayout());
-        employees = SingleDAO.getEmployeeDAO().getAllEmployee();
+        employees = FactoryDAO.getEmployeeDAO().getAllEmployee();
         model = new EmployeeTable();
         table = new JTable(model);
-        panel.add(table, BorderLayout.NORTH);
-        getContentPane().add(panel);
         JScrollPane scrollPane = new JScrollPane(table);
-        getContentPane().add(scrollPane);
+        panel.add(scrollPane, BorderLayout.NORTH);
+        this.addEmployeeBtn = new JButton("Ajouter un employee");
+        panel.add(this.addEmployeeBtn, BorderLayout.SOUTH);
+        addEmployeeBtn.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e){
+                new AddEmployeeFrame(getThis()).setVisible(true);
+            }
+        });
+        getContentPane().add(panel);
     }
 
     public MainFrameTable getThis() {
         return this;
+    }
+
+
+    public Employee getNewEmployee(){
+        return newEmployee;
+    }
+
+    public void setNewEmployee(Employee newEmployee){
+        System.out.println("Ajout de l'employé :\n" + newEmployee);
+        this.newEmployee = newEmployee;
     }
 }

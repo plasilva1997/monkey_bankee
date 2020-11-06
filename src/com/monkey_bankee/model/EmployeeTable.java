@@ -1,6 +1,6 @@
 package com.monkey_bankee.model;
 
-import com.monkey_bankee.dao.SingleDAO;
+import com.monkey_bankee.dao.FactoryDAO;
 
 import javax.swing.table.AbstractTableModel;
 import java.sql.SQLException;
@@ -25,7 +25,7 @@ public class EmployeeTable extends AbstractTableModel {
     public EmployeeTable() {
         employees = new ArrayList<Employee>();
         try {
-            employees = SingleDAO.getEmployeeDAO().getAllEmployee();
+            employees = FactoryDAO.getEmployeeDAO().getAllEmployee();
         } catch (SQLException se) {
             se.printStackTrace();
         }
