@@ -1,15 +1,13 @@
 package com.monkey_bankee.gui;
 
 import com.monkey_bankee.dao.FactoryDAO;
-import com.monkey_bankee.dao.impl.HashDAO;
+import com.monkey_bankee.dao.HashDAO;
 import com.monkey_bankee.model.Employee;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import java.awt.event.ActionEvent;
 
 public class AddEmployeeFrame extends JFrame {
