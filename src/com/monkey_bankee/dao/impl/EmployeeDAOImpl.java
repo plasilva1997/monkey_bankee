@@ -21,32 +21,20 @@ public class EmployeeDAOImpl extends DBUtil implements EmployeeDAO {
 
     @Override
     public void addEmployee(Employee employee) {
-        String password = employee.getPassword();
-        String algorithm = "SHA-512";
-        byte[] plainText = password.getBytes();
+        HashDAO hash = new HashDAO();
+        String passwordHash = hash.hashPassword(employee.getPassword());
+
         try {
             String query = "INSERT INTO employee (name, firstname, city_bank, login, password, tel, created_at)" +
                     "VALUES ( ?, ?, ?, ?, ?, ?, ?) ";
 
-            //Password encrypt SHA 512
-            MessageDigest md = MessageDigest.getInstance(algorithm);
-            md.reset();
-            md.update(plainText);
-            byte[] encodedPassword = md.digest();
-            StringBuilder sb = new StringBuilder();
-            for (int i = 0; i < encodedPassword.length; i++) {
-                if ((encodedPassword[i] & 0xff) < 0x10) {
-                    sb.append("0");
-                }
-                sb.append(Long.toString(encodedPassword[i] & 0xff, 16));
-            }
             // set all the preparedstatement parameters
             PreparedStatement st = getConnection().prepareStatement(query);
             st.setString(1, employee.getEmployee_nom());
             st.setString(2, employee.getEmployee_prenom());
             st.setString(3, employee.getEmployee_ville());
             st.setString(4, employee.getLogin());
-            st.setString(5, sb.toString());
+            st.setString(5, passwordHash);
             st.setString(6, employee.getEmployee_tel());
             st.setTimestamp(7, new java.sql.Timestamp(new java.util.Date().getTime()));
 
@@ -55,7 +43,7 @@ public class EmployeeDAOImpl extends DBUtil implements EmployeeDAO {
             if (st.executeUpdate() == 1) {
                 System.out.println("Employé(e) est créé..");
             }
-        } catch (SQLException | NoSuchAlgorithmException e){
+        } catch (SQLException e){
             e.printStackTrace();
         }
     }

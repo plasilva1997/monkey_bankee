@@ -78,6 +78,7 @@ public class AddEmployeeFrame extends JFrame {
         save.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
                 Employee employee = new Employee();
 
                 employee.setEmployee_nom(nom.getText());
