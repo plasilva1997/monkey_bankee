@@ -1,12 +1,10 @@
 package com.monkey_bankee.dao.impl;
 
+import com.monkey_bankee.dao.HashDAO;
 import com.monkey_bankee.model.Employee;
 import com.monkey_bankee.dao.EmployeeDAO;
 import com.monkey_bankee.util.DBUtil;
 
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;

@@ -46,12 +46,6 @@ public class EmployeeTable extends AbstractTableModel {
         return Titres[col];
     }
 
-    @Override
-    public boolean isCellEditable(int row, int col) {
-        if (col == 1 || (col == 2))
-            return false;
-        return true;
-    }
 
     @Override
     public void setValueAt(Object arg0, int row, int col) {

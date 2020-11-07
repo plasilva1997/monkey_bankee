@@ -1,4 +1,4 @@
-package com.monkey_bankee.dao.impl;
+package com.monkey_bankee.dao;
 
 import java.security.MessageDigest;
 

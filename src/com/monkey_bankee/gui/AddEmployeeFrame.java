@@ -1,15 +1,13 @@
 package com.monkey_bankee.gui;
 
 import com.monkey_bankee.dao.FactoryDAO;
-import com.monkey_bankee.dao.impl.HashDAO;
+import com.monkey_bankee.dao.HashDAO;
 import com.monkey_bankee.model.Employee;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import java.awt.event.ActionEvent;
 
 public class AddEmployeeFrame extends JFrame {
@@ -25,17 +23,17 @@ public class AddEmployeeFrame extends JFrame {
     private JButton save;
     private MainFrameTable mother;
 
-    public AddEmployeeFrame(MainFrameTable mother){
+    public AddEmployeeFrame(MainFrameTable mother) {
         super();
         setTitle("Ajout Employee");
         setBounds(100, 100, 400, 800);
-        setMinimumSize(new Dimension(200,200));
+        setMinimumSize(new Dimension(200, 200));
         this.employee = new Employee();
         this.mother = mother;
         initComponent();
     }
 
-    private void initComponent(){
+    private void initComponent() {
         JPanel panel = new JPanel(new GridLayout(8, 2));
 
         JLabel label1 = new JLabel("Nom");
@@ -85,7 +83,7 @@ public class AddEmployeeFrame extends JFrame {
 
                 String nom = nomtf.getText();
                 String prenom = prenomtf.getText();
-                String ville  = villetf.getText();
+                String ville = villetf.getText();
                 String login = logintf.getText();
                 String pass = passwordpf.getText();
                 String passVerif = passwordConfirmpf.getText();
@@ -94,7 +92,7 @@ public class AddEmployeeFrame extends JFrame {
                 String passHash = hash.hashPassword(pass);
                 String passVerifHash = hash.hashPassword(passVerif);
 
-                if (nom.isEmpty() || prenom.isEmpty() || ville.isEmpty() || login.isEmpty() || pass.isEmpty() || passVerif.isEmpty() || tel.isEmpty()){
+                if (nom.isEmpty() || prenom.isEmpty() || ville.isEmpty() || login.isEmpty() || pass.isEmpty() || passVerif.isEmpty() || tel.isEmpty()) {
                     JOptionPane.showMessageDialog(panel, "Veuillez remplir tous les champs");
                 } else {
                     employee.setEmployee_nom(nom);
@@ -105,18 +103,21 @@ public class AddEmployeeFrame extends JFrame {
                     employee.setEmployee_tel(tel);
                     employee.setCreated_at(new java.sql.Timestamp(new java.util.Date().getTime()));
 
-                    if (passHash.equals(passVerifHash)){
-                        try{
+                    if (passHash.equals(passVerifHash)) {
+                        try {
                             FactoryDAO.getEmployeeDAO().addEmployee(employee);
-                        } catch (SQLException se){
+                        } catch (SQLException se) {
                             se.printStackTrace();
-                        } catch (Exception e){
+                        } catch (Exception e) {
                             e.printStackTrace();
                         }
+                    } else {
+                        JOptionPane.showMessageDialog(panel, "Les mots de passe ne sont pas identiques");
                     }
                 }
                 mother.setNewEmployee(employee);
                 setVisible(false);
+                mother.refresh();
             }
         });
         getContentPane().add(panel);

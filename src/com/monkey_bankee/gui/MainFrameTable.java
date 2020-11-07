@@ -11,6 +11,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.event.TableModelEvent;
 
 public class MainFrameTable extends JFrame {
 
@@ -66,5 +69,10 @@ public class MainFrameTable extends JFrame {
     public void setNewEmployee(Employee newEmployee){
         System.out.println("Ajout de l'employé :\n" + newEmployee);
         this.newEmployee = newEmployee;
+    }
+
+    public void refresh(){
+        model.fireTableDataChanged();
+        model.fireTableStructureChanged();
     }
 }
