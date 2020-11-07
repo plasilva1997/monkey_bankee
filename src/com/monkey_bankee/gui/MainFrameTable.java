@@ -73,6 +73,6 @@ public class MainFrameTable extends JFrame {
 
     public void refresh(){
         model.fireTableDataChanged();
-        model.fireTableStructureChanged();
+        this.panel.repaint();
     }
 }

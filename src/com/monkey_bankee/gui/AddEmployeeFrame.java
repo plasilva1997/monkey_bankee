@@ -94,6 +94,7 @@ public class AddEmployeeFrame extends JFrame {
 
                 if (nom.isEmpty() || prenom.isEmpty() || ville.isEmpty() || login.isEmpty() || pass.isEmpty() || passVerif.isEmpty() || tel.isEmpty()) {
                     JOptionPane.showMessageDialog(panel, "Veuillez remplir tous les champs");
+                    setVisible(true);
                 } else {
                     employee.setEmployee_nom(nom);
                     employee.setEmployee_prenom(prenom);
@@ -106,6 +107,10 @@ public class AddEmployeeFrame extends JFrame {
                     if (passHash.equals(passVerifHash)) {
                         try {
                             FactoryDAO.getEmployeeDAO().addEmployee(employee);
+                            JOptionPane.showMessageDialog(panel, "Employé(e) ajouté(e)");
+                            mother.setNewEmployee(employee);
+                            setVisible(false);
+                            mother.refresh();
                         } catch (SQLException se) {
                             se.printStackTrace();
                         } catch (Exception e) {
@@ -113,11 +118,9 @@ public class AddEmployeeFrame extends JFrame {
                         }
                     } else {
                         JOptionPane.showMessageDialog(panel, "Les mots de passe ne sont pas identiques");
+                        setVisible(true);
                     }
                 }
-                mother.setNewEmployee(employee);
-                setVisible(false);
-                mother.refresh();
             }
         });
         getContentPane().add(panel);

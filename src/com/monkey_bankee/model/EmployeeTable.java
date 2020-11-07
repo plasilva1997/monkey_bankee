@@ -48,13 +48,14 @@ public class EmployeeTable extends AbstractTableModel {
 
 
     @Override
-    public void setValueAt(Object arg0, int row, int col) {
+    public void setValueAt(Object value, int row, int col) {
         // TODO Auto-generated method stub
         if (col == 1) {
-            employees.get(row).setEmployee_nom((String) arg0);
+            employees.get(row).setEmployee_nom((String) value);
         } else if (col == 3) {
-            employees.get(row).setEmployee_ville((String) arg0);
+            employees.get(row).setEmployee_ville((String) value);
         }
+        fireTableCellUpdated(row, col);
     }
 
     @Override
