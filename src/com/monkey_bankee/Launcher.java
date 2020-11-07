@@ -15,7 +15,7 @@ public class Launcher {
 
         try {
             //Test add
-            FactoryDAO.getEmployeeDAO().addEmployee(new Employee(
+    /*        FactoryDAO.getEmployeeDAO().addEmployee(new Employee(
                     0,
                     "Didier",
                     "Maxime",
@@ -23,7 +23,7 @@ public class Launcher {
                     "dm@gmail.com",
                     "azerty",
                     "06584426658"
-            ));
+            ));*/
             ArrayList<Employee> employees = FactoryDAO.getEmployeeDAO().getAllEmployee();
             MainFrameTable mf = new MainFrameTable(employees);
         } catch (SQLException ex) {

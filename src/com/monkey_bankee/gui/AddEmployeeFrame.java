@@ -1,6 +1,7 @@
 package com.monkey_bankee.gui;
 
 import com.monkey_bankee.dao.FactoryDAO;
+import com.monkey_bankee.dao.impl.HashDAO;
 import com.monkey_bankee.model.Employee;
 
 import javax.swing.*;
@@ -14,13 +15,13 @@ import java.awt.event.ActionEvent;
 public class AddEmployeeFrame extends JFrame {
 
     private Employee employee;
-    private JTextField nom;
-    private JTextField prenom;
-    private JTextField ville;
-    private JTextField login;
-    private JPasswordField password;
-    private JPasswordField passwordConfirm;
-    private JTextField tel;
+    private JTextField nomtf;
+    private JTextField prenomtf;
+    private JTextField villetf;
+    private JTextField logintf;
+    private JPasswordField passwordpf;
+    private JPasswordField passwordConfirmpf;
+    private JTextField teltf;
     private JButton save;
     private MainFrameTable mother;
 
@@ -39,61 +40,80 @@ public class AddEmployeeFrame extends JFrame {
 
         JLabel label1 = new JLabel("Nom");
         panel.add(label1);
-        nom = new JTextField();
-        panel.add(nom);
+        nomtf = new JTextField();
+        panel.add(nomtf);
 
         JLabel label2 = new JLabel("Prenom");
         panel.add(label2);
-        prenom = new JTextField();
-        panel.add(prenom);
+        prenomtf = new JTextField();
+        panel.add(prenomtf);
 
         JLabel label3 = new JLabel("Ville banque");
         panel.add(label3);
-        ville = new JTextField();
-        panel.add(ville);
+        villetf = new JTextField();
+        panel.add(villetf);
 
         JLabel label4 = new JLabel("Adresse mail");
         panel.add(label4);
-        login = new JTextField();
-        panel.add(login);
+        logintf = new JTextField();
+        panel.add(logintf);
 
         JLabel label5 = new JLabel("Password");
         panel.add(label5);
-        password = new JPasswordField();
-        panel.add(password);
+        passwordpf = new JPasswordField();
+        panel.add(passwordpf);
 
         JLabel label6 = new JLabel("Confirmation Password");
         panel.add(label6);
-        passwordConfirm = new JPasswordField();
-        panel.add(passwordConfirm);
+        passwordConfirmpf = new JPasswordField();
+        panel.add(passwordConfirmpf);
 
         JLabel label7 = new JLabel("N° Telephone");
         panel.add(label7);
-        tel = new JTextField();
-        panel.add(tel);
+        teltf = new JTextField();
+        panel.add(teltf);
 
         save = new JButton("Ajouter");
         panel.add(save);
 
         save.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(ActionEvent ae) {
 
+                HashDAO hash = new HashDAO();
                 Employee employee = new Employee();
 
-                employee.setEmployee_nom(nom.getText());
-                employee.setEmployee_prenom(prenom.getText());
-                employee.setEmployee_ville(ville.getText());
-                employee.setLogin(login.getText());
-                employee.setPassword(String.valueOf(password.getPassword()));
-                employee.setEmployee_tel(tel.getText());
-                employee.setCreated_at(new java.sql.Timestamp(new java.util.Date().getTime()));
-                try {
-                    if (password.getPassword() == passwordConfirm.getPassword()){
-                        FactoryDAO.getEmployeeDAO().addEmployee(employee);
+                String nom = nomtf.getText();
+                String prenom = prenomtf.getText();
+                String ville  = villetf.getText();
+                String login = logintf.getText();
+                String pass = passwordpf.getText();
+                String passVerif = passwordConfirmpf.getText();
+                String tel = teltf.getText();
+
+                String passHash = hash.hashPassword(pass);
+                String passVerifHash = hash.hashPassword(passVerif);
+
+                if (nom.isEmpty() || prenom.isEmpty() || ville.isEmpty() || login.isEmpty() || pass.isEmpty() || passVerif.isEmpty() || tel.isEmpty()){
+                    JOptionPane.showMessageDialog(panel, "Veuillez remplir tous les champs");
+                } else {
+                    employee.setEmployee_nom(nom);
+                    employee.setEmployee_prenom(prenom);
+                    employee.setEmployee_ville(ville);
+                    employee.setLogin(login);
+                    employee.setPassword(passHash);
+                    employee.setEmployee_tel(tel);
+                    employee.setCreated_at(new java.sql.Timestamp(new java.util.Date().getTime()));
+
+                    if (passHash.equals(passVerifHash)){
+                        try{
+                            FactoryDAO.getEmployeeDAO().addEmployee(employee);
+                        } catch (SQLException se){
+                            se.printStackTrace();
+                        } catch (Exception e){
+                            e.printStackTrace();
+                        }
                     }
-                } catch (SQLException ex) {
-                    Logger.getLogger(AddEmployeeFrame.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 mother.setNewEmployee(employee);
                 setVisible(false);
