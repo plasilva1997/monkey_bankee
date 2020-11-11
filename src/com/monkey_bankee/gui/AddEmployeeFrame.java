@@ -81,13 +81,13 @@ public class AddEmployeeFrame extends JFrame {
                 HashDAO hash = new HashDAO();
                 Employee employee = new Employee();
 
-                String nom = nomtf.getText();
-                String prenom = prenomtf.getText();
-                String ville = villetf.getText();
-                String login = logintf.getText();
-                String pass = passwordpf.getText();
-                String passVerif = passwordConfirmpf.getText();
-                String tel = teltf.getText();
+                String nom = Name.getText();
+                String prenom = FirstName.getText();
+                String ville = CityBank.getText();
+                String login = Login.getText();
+                String pass = String.valueOf(Password.getPassword());
+                String passVerif = String.valueOf(passwordConfirm.getPassword());
+                String tel = Mobile.getText();
 
                 String passHash = hash.hashPassword(pass);
                 String passVerifHash = hash.hashPassword(passVerif);
