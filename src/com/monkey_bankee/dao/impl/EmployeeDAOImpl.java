@@ -12,7 +12,6 @@ import java.util.ArrayList;
 
 public class EmployeeDAOImpl extends DBUtil implements EmployeeDAO {
 
-
     public EmployeeDAOImpl() throws SQLException {
         super();
     }

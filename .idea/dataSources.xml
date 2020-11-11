@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="monkeyBankee@localhost" uuid="a8996219-ee35-4269-b6d1-473a6336527b">
+    <data-source source="LOCAL" name="monkeybankee" uuid="3a03cee7-7747-47a1-b758-a192ae496962">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
-      <jdbc-url>jdbc:postgresql://localhost:5432/monkeyBankee</jdbc-url>
+      <jdbc-url>jdbc:postgresql://localhost:5432/monkeybankee</jdbc-url>
+
     </data-source>
   </component>
 </project>
