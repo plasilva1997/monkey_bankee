@@ -1,5 +1,6 @@
 package com.monkey_bankee;
 
+import com.monkey_bankee.gui.MainFrameAddEmployee;
 import com.monkey_bankee.gui.MainFrameLogin;
 import com.monkey_bankee.gui.MainFrameTable;
 import com.monkey_bankee.model.*;
@@ -15,14 +16,27 @@ import java.util.logging.Logger;
 public class Launcher {
 
 
-    //Ouverture de de la fenetre SWING
-    public static void main(String[] args) throws ClassNotFoundException, UnsupportedLookAndFeelException, InstantiationException, IllegalAccessException, InvocationTargetException, InterruptedException {
+    //Ouverture de la fenetre SWING
+    /*public static void main(String[] args) throws ClassNotFoundException, UnsupportedLookAndFeelException, InstantiationException, IllegalAccessException, InvocationTargetException, InterruptedException {
         UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         SwingUtilities.invokeAndWait(new Runnable() {
             @Override
             public void run() {
                 MainFrameLogin login = new MainFrameLogin();
                 login.setVisible(true);
+            }
+        });
+    }*/
+
+    //Ouverture de la fenetre  Swing Add Employee
+
+    public static void main(String[] args) throws ClassNotFoundException, UnsupportedLookAndFeelException, InstantiationException, IllegalAccessException, InvocationTargetException, InterruptedException {
+        UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        SwingUtilities.invokeAndWait(new Runnable() {
+            @Override
+            public void run() {
+                MainFrameAddEmployee add = new MainFrameAddEmployee();
+                add.setVisible(true);
             }
         });
     }
@@ -71,7 +85,7 @@ public class Launcher {
 
             //add Client
 
-           /* FactoryDAO.getClientDAO().addClient(new Client(
+            FactoryDAO.getClientDAO().addClient(new Client(
                     0,
                     "John",
                     "Barzoy",
@@ -89,7 +103,7 @@ public class Launcher {
                     "76000",
                     "Rouen"
 
-            ));*/
+            ));
 
         } catch (SQLException ex) {
             Logger.getLogger(Launcher.class.getName()).log(Level.SEVERE, null, ex);

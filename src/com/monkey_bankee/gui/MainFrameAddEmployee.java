@@ -13,7 +13,7 @@ import java.sql.Timestamp;
 import java.util.Date;
 
 
-public class MainFrameAdd {
+public class MainFrameAddEmployee extends JFrame {
     private JTextField Name;
     private JTextField FirstName;
     private JTextField CityBank;
@@ -28,7 +28,11 @@ public class MainFrameAdd {
     private JPasswordField passwordConfirm;
 
 
-    public MainFrameAdd() {
+    public MainFrameAddEmployee() {
+        add(JPanelAdd);
+        setTitle("Add Employee");
+        setSize(700, 800);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
 
     }
@@ -88,7 +92,7 @@ public class MainFrameAdd {
                 String ville  = CityBank.getText();
                 String login = Login.getText();
                 String pass = Password.getText();
-                String passVerif = passwordConfirm.getText();
+                String passVerif = String.valueOf(passwordConfirm.getPassword());
                 String tel = Mobile.getText();
 
                 String passHash = hash.hashPassword(pass);
