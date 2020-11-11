@@ -60,6 +60,7 @@ public class EmployeeTable extends AbstractTableModel {
 
     @Override
     public Object getValueAt(int row, int col) {
+        Employee employee = employees.get(row);
         switch (col) {
             case 0:
                 return employees.get(row).getEmployee_id();

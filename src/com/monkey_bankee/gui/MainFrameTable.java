@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.event.TableModelEvent;
+import javax.swing.table.DefaultTableModel;
 
 public class MainFrameTable extends JFrame {
 
@@ -71,8 +72,9 @@ public class MainFrameTable extends JFrame {
         this.newEmployee = newEmployee;
     }
 
-    public void refresh(){
-        model.fireTableDataChanged();
-        this.panel.repaint();
+    public void refresh() throws SQLException {
+        int row = FactoryDAO.getEmployeeDAO().getAllEmployee().size()-1;
+        model.fireTableRowsInserted(row, row);
+        table.repaint();
     }
 }
