@@ -46,8 +46,8 @@ public class Launcher {
             ArrayList<Employee> employees = FactoryDAO.getEmployeeDAO().getAllEmployee();
             MainFrameTable mf = new MainFrameTable(employees);
 
-            ArrayList<Client> clients = FactoryDAO.getClientDAO().getAllClient();
-            clients.forEach(System.out::println);
+            //ArrayList<Client> clients = FactoryDAO.getClientDAO().getAllClient();
+            //clients.forEach(System.out::println);
 
             //add Client
 
