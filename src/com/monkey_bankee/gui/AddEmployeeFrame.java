@@ -23,17 +23,17 @@ public class AddEmployeeFrame extends JFrame {
     private JButton save;
     private MainFrameTable mother;
 
-    public AddEmployeeFrame(MainFrameTable mother){
+    public AddEmployeeFrame(MainFrameTable mother) {
         super();
         setTitle("Ajout Employee");
         setBounds(100, 100, 400, 800);
-        setMinimumSize(new Dimension(200,200));
+        setMinimumSize(new Dimension(200, 200));
         this.employee = new Employee();
         this.mother = mother;
         initComponent();
     }
 
-    private void initComponent(){
+    private void initComponent() {
         JPanel panel = new JPanel(new GridLayout(8, 2));
 
         JLabel label1 = new JLabel("Nom");
@@ -83,7 +83,7 @@ public class AddEmployeeFrame extends JFrame {
 
                 String nom = nomtf.getText();
                 String prenom = prenomtf.getText();
-                String ville  = villetf.getText();
+                String ville = villetf.getText();
                 String login = logintf.getText();
                 String pass = passwordpf.getText();
                 String passVerif = passwordConfirmpf.getText();
@@ -92,8 +92,9 @@ public class AddEmployeeFrame extends JFrame {
                 String passHash = hash.hashPassword(pass);
                 String passVerifHash = hash.hashPassword(passVerif);
 
-                if (nom.isEmpty() || prenom.isEmpty() || ville.isEmpty() || login.isEmpty() || pass.isEmpty() || passVerif.isEmpty() || tel.isEmpty()){
+                if (nom.isEmpty() || prenom.isEmpty() || ville.isEmpty() || login.isEmpty() || pass.isEmpty() || passVerif.isEmpty() || tel.isEmpty()) {
                     JOptionPane.showMessageDialog(panel, "Veuillez remplir tous les champs");
+                    setVisible(true);
                 } else {
                     employee.setEmployee_nom(nom);
                     employee.setEmployee_prenom(prenom);
@@ -103,18 +104,23 @@ public class AddEmployeeFrame extends JFrame {
                     employee.setEmployee_tel(tel);
                     employee.setCreated_at(new java.sql.Timestamp(new java.util.Date().getTime()));
 
-                    if (passHash.equals(passVerifHash)){
-                        try{
+                    if (passHash.equals(passVerifHash)) {
+                        try {
                             FactoryDAO.getEmployeeDAO().addEmployee(employee);
-                        } catch (SQLException se){
+                            JOptionPane.showMessageDialog(panel, "Employé(e) ajouté(e)");
+                            mother.setNewEmployee(employee);
+                            setVisible(false);
+                            mother.refresh();
+                        } catch (SQLException se) {
                             se.printStackTrace();
-                        } catch (Exception e){
+                        } catch (Exception e) {
                             e.printStackTrace();
                         }
+                    } else {
+                        JOptionPane.showMessageDialog(panel, "Les mots de passe ne sont pas identiques");
+                        setVisible(true);
                     }
                 }
-                mother.setNewEmployee(employee);
-                setVisible(false);
             }
         });
         getContentPane().add(panel);

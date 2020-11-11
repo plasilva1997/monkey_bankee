@@ -15,5 +15,4 @@ public class FactoryDAO {
             employeeDAO = new EmployeeDAOImpl();
         }
         return employeeDAO;
-    }
 }

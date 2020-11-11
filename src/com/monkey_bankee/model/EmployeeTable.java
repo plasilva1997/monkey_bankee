@@ -46,25 +46,21 @@ public class EmployeeTable extends AbstractTableModel {
         return Titres[col];
     }
 
-    @Override
-    public boolean isCellEditable(int row, int col) {
-        if (col == 1 || (col == 2))
-            return false;
-        return true;
-    }
 
     @Override
-    public void setValueAt(Object arg0, int row, int col) {
+    public void setValueAt(Object value, int row, int col) {
         // TODO Auto-generated method stub
         if (col == 1) {
-            employees.get(row).setEmployee_nom((String) arg0);
+            employees.get(row).setEmployee_nom((String) value);
         } else if (col == 3) {
-            employees.get(row).setEmployee_ville((String) arg0);
+            employees.get(row).setEmployee_ville((String) value);
         }
+        fireTableCellUpdated(row, col);
     }
 
     @Override
     public Object getValueAt(int row, int col) {
+        Employee employee = employees.get(row);
         switch (col) {
             case 0:
                 return employees.get(row).getEmployee_id();
