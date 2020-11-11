@@ -64,6 +64,36 @@ public class EmployeeDAOImpl extends DBUtil implements EmployeeDAO {
     }
 
     @Override
+    public Employee getByLogin(String Login) {
+        Employee employee = new Employee();
+
+        try {
+
+            String sql = "SELECT * FROM public.employee WHERE login = ?";
+            PreparedStatement pstmt = getConnection().prepareCall(sql);
+            pstmt.setString(1, Login);
+            ResultSet rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                employee = transformSqlToEmployee(rs);
+            } else {
+                System.out.println("Mauvaise combination");
+            }
+        } catch (SQLException throwables) {
+
+            throwables.printStackTrace();
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+
+        }
+
+        return employee;
+    }
+
+
+    @Override
     public Employee getByIdEmployee(int id) {
         Employee employee = new Employee();
         try{

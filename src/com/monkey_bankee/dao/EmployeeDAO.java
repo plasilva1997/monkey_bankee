@@ -10,5 +10,6 @@ public interface EmployeeDAO {
     public  Employee getByIdEmployee(int id);
     public  boolean deleteEmployee(int id);
     public ArrayList<Employee> getAllEmployee();
+    public  Employee getByLogin (String Login);
 
 }
