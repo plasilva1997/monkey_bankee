@@ -1,5 +1,6 @@
 package com.monkey_bankee;
 
+import com.monkey_bankee.gui.MainFrameTable;
 import com.monkey_bankee.model.*;
 import com.monkey_bankee.dao.FactoryDAO;
 
@@ -32,13 +33,25 @@ public class Launcher {
 //        }
 
         try {
+            //Test add employee
+    /*        FactoryDAO.getEmployeeDAO().addEmployee(new Employee(
+                    0,
+                    "Didier",
+                    "Maxime",
+                    "Lille",
+                    "dm@gmail.com",
+                    "azerty",
+                    "06584426658"
+            ));*/
+            ArrayList<Employee> employees = FactoryDAO.getEmployeeDAO().getAllEmployee();
+            MainFrameTable mf = new MainFrameTable(employees);
 
             ArrayList<Client> clients = FactoryDAO.getClientDAO().getAllClient();
             clients.forEach(System.out::println);
 
-            //add
+            //add Client
 
-            FactoryDAO.getClientDAO().addClient(new Client(
+           /* FactoryDAO.getClientDAO().addClient(new Client(
                     0,
                     "John",
                     "Barzoy",
@@ -56,7 +69,8 @@ public class Launcher {
                     "76000",
                     "Rouen"
 
-            ));
+            ));*/
+
         } catch (SQLException ex) {
             Logger.getLogger(Launcher.class.getName()).log(Level.SEVERE, null, ex);
         }
