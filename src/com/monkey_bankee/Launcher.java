@@ -1,5 +1,6 @@
 package com.monkey_bankee;
 
+import com.monkey_bankee.gui.MainFrameAddClient;
 import com.monkey_bankee.gui.MainFrameAddEmployee;
 import com.monkey_bankee.gui.MainFrameLogin;
 import com.monkey_bankee.gui.MainFrameTable;
@@ -28,6 +29,7 @@ public class Launcher {
         });
     }*/
 
+    /*
     //Ouverture de la fenetre  Swing Add Employee
 
     public static void main(String[] args) throws ClassNotFoundException, UnsupportedLookAndFeelException, InstantiationException, IllegalAccessException, InvocationTargetException, InterruptedException {
@@ -35,8 +37,22 @@ public class Launcher {
         SwingUtilities.invokeAndWait(new Runnable() {
             @Override
             public void run() {
-                MainFrameAddEmployee add = new MainFrameAddEmployee();
-                add.setVisible(true);
+                MainFrameAddEmployee addemployee = new MainFrameAddEmployee();
+                addemployee.setVisible(true);
+            }
+        });
+    }
+*/
+
+    //Ouverture de la fenetre  Swing Add Client
+
+    public static void main(String[] args) throws ClassNotFoundException, UnsupportedLookAndFeelException, InstantiationException, IllegalAccessException, InvocationTargetException, InterruptedException {
+        UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        SwingUtilities.invokeAndWait(new Runnable() {
+            @Override
+            public void run() {
+                MainFrameAddClient addclient = new MainFrameAddClient();
+                addclient.setVisible(true);
             }
         });
     }
