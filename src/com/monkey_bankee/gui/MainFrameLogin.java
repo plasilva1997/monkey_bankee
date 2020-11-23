@@ -32,6 +32,7 @@ public class MainFrameLogin extends JFrame {
                 Employee employee = new Employee();
                 HashDAO hash = new HashDAO();
 
+
                 String email = LoginTextField.getText();
                 String password = String.valueOf(passwordField.getPassword());;
 
@@ -41,14 +42,22 @@ public class MainFrameLogin extends JFrame {
                     if (hashPasswordInput.equals(employee.getPassword())) {
                         System.out.println(" Bonjour " + employee.getEmployee_prenom() + " " + employee.getEmployee_nom());
                         JOptionPane.showMessageDialog(JPanelLogin, " Bonjour " + employee.getEmployee_prenom() + " " + employee.getEmployee_nom());
+
+                        dispose();
+                        MainFrameAddEmployee addEmployee = new MainFrameAddEmployee();
+                        addEmployee.setVisible(true);
+
+
                     } else {
-                        System.out.println("Mot de passe ou Mail érrouné");
-                        JOptionPane.showMessageDialog(JPanelLogin, "Mot de passe ou Mail érrouné");
+                        System.out.println("Mot de passe ou Mail incorrecte");
+                        JOptionPane.showMessageDialog(JPanelLogin, "Mot de passe ou Mail incorrecte");
                     }
                 } catch (Exception exception) {
                     exception.printStackTrace();
                 }
+
             }
+
         });
     }
 }
