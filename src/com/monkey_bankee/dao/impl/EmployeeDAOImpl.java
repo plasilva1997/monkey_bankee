@@ -64,6 +64,36 @@ public class EmployeeDAOImpl extends DBUtil implements EmployeeDAO {
     }
 
     @Override
+    public Employee getByLogin(String Login) {
+        Employee employee = new Employee();
+
+        try {
+
+            String sql = "SELECT * FROM public.employee WHERE login = ?";
+            PreparedStatement pstmt = getConnection().prepareCall(sql);
+            pstmt.setString(1, Login);
+            ResultSet rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                employee = transformSqlToEmployee(rs);
+            } else {
+                System.out.println("Mail n'existe pas");
+            }
+        } catch (SQLException throwables) {
+
+            throwables.printStackTrace();
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+
+        }
+
+        return employee;
+    }
+
+
+    @Override
     public Employee getByIdEmployee(int id) {
         Employee employee = new Employee();
         try{
@@ -107,6 +137,7 @@ public class EmployeeDAOImpl extends DBUtil implements EmployeeDAO {
         employee.setEmployee_prenom(rs.getString("firstname"));
         employee.setEmployee_ville(rs.getString("city_bank"));
         employee.setLogin(rs.getString("login"));
+        employee.setPassword(rs.getString("password"));
         employee.setEmployee_tel(rs.getString("tel"));
         employee.setCreated_at(rs.getTimestamp("created_at"));
 

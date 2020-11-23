@@ -109,8 +109,10 @@ public class Employee {
                 ", employee_prenom='" + employee_prenom + '\'' +
                 ", employee_ville='" + employee_ville + '\'' +
                 ", login='" + login + '\'' +
+                ", password='" + password + '\'' +
                 ", employee_tel='" + employee_tel + '\'' +
                 ", created_at=" + created_at +
+                ", modified_at=" + modified_at +
                 '}';
     }
 }

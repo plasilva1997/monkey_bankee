@@ -13,14 +13,14 @@ import java.awt.event.ActionEvent;
 public class AddEmployeeFrame extends JFrame {
 
     private Employee employee;
-    private JTextField nomtf;
-    private JTextField prenomtf;
-    private JTextField villetf;
-    private JTextField logintf;
-    private JPasswordField passwordpf;
-    private JPasswordField passwordConfirmpf;
-    private JTextField teltf;
-    private JButton save;
+    private JTextField Name;
+    private JTextField FirstName;
+    private JTextField CityBank;
+    private JTextField Login;
+    private JPasswordField Password;
+    private JPasswordField passwordConfirm;
+    private JTextField Mobile;
+    private JButton Register;
     private MainFrameTable mother;
 
     public AddEmployeeFrame(MainFrameTable mother) {
@@ -38,56 +38,56 @@ public class AddEmployeeFrame extends JFrame {
 
         JLabel label1 = new JLabel("Nom");
         panel.add(label1);
-        nomtf = new JTextField();
-        panel.add(nomtf);
+        Name = new JTextField();
+        panel.add(Name);
 
         JLabel label2 = new JLabel("Prenom");
         panel.add(label2);
-        prenomtf = new JTextField();
-        panel.add(prenomtf);
+        FirstName = new JTextField();
+        panel.add(FirstName);
 
         JLabel label3 = new JLabel("Ville banque");
         panel.add(label3);
-        villetf = new JTextField();
-        panel.add(villetf);
+        CityBank = new JTextField();
+        panel.add(CityBank);
 
         JLabel label4 = new JLabel("Adresse mail");
         panel.add(label4);
-        logintf = new JTextField();
-        panel.add(logintf);
+        Login = new JTextField();
+        panel.add(Login);
 
         JLabel label5 = new JLabel("Password");
         panel.add(label5);
-        passwordpf = new JPasswordField();
-        panel.add(passwordpf);
+        Password = new JPasswordField();
+        panel.add(Password);
 
         JLabel label6 = new JLabel("Confirmation Password");
         panel.add(label6);
-        passwordConfirmpf = new JPasswordField();
-        panel.add(passwordConfirmpf);
+        passwordConfirm = new JPasswordField();
+        panel.add(passwordConfirm);
 
         JLabel label7 = new JLabel("N° Telephone");
         panel.add(label7);
-        teltf = new JTextField();
-        panel.add(teltf);
+        Mobile = new JTextField();
+        panel.add(Mobile);
 
-        save = new JButton("Ajouter");
-        panel.add(save);
+        Register = new JButton("Ajouter");
+        panel.add(Register);
 
-        save.addActionListener(new ActionListener() {
+        Register.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
 
                 HashDAO hash = new HashDAO();
                 Employee employee = new Employee();
 
-                String nom = nomtf.getText();
-                String prenom = prenomtf.getText();
-                String ville = villetf.getText();
-                String login = logintf.getText();
-                String pass = passwordpf.getText();
-                String passVerif = passwordConfirmpf.getText();
-                String tel = teltf.getText();
+                String nom = Name.getText();
+                String prenom = FirstName.getText();
+                String ville = CityBank.getText();
+                String login = Login.getText();
+                String pass = String.valueOf(Password.getPassword());
+                String passVerif = String.valueOf(passwordConfirm.getPassword());
+                String tel = Mobile.getText();
 
                 String passHash = hash.hashPassword(pass);
                 String passVerifHash = hash.hashPassword(passVerif);
