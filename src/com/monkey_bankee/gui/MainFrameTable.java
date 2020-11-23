@@ -29,8 +29,8 @@ public class MainFrameTable extends JFrame {
         super();
         setVisible(true);
         setTitle("Les Banquiers");
-        setBounds(200, 200, 800, 600);
-        setMinimumSize(new Dimension(300, 300));
+        setBounds(200, 200, 800, 800);
+        setMinimumSize(new Dimension(800, 800));
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.employees = employees;
         try {
@@ -72,9 +72,6 @@ public class MainFrameTable extends JFrame {
         this.newEmployee = newEmployee;
     }
 
-    public void refresh() throws SQLException {
-        int row = FactoryDAO.getEmployeeDAO().getAllEmployee().size()-1;
-        model.fireTableRowsInserted(row, row);
-        table.repaint();
+    public void refresh(){
     }
 }
