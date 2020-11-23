@@ -108,15 +108,14 @@ public class AddEmployeeFrame extends JFrame {
                         try {
                             FactoryDAO.getEmployeeDAO().addEmployee(employee);
                             JOptionPane.showMessageDialog(panel, "Employé(e) ajouté(e)");
+                            mother.setNewEmployee(employee);
                             setVisible(false);
+                            mother.refresh();
                         } catch (SQLException se) {
                             se.printStackTrace();
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
-                        mother.refresh();
-                        mother.setNewEmployee(employee);
-
                     } else {
                         JOptionPane.showMessageDialog(panel, "Les mots de passe ne sont pas identiques");
                         setVisible(true);

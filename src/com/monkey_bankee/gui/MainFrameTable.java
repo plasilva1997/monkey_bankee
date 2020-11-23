@@ -11,12 +11,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.event.TableModelEvent;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
 
 public class MainFrameTable extends JFrame {
 
@@ -24,11 +22,10 @@ public class MainFrameTable extends JFrame {
     private JPanel panel;
     private JTable table;
     private EmployeeTable model;
-    private EmployeeTable model2;
     private Employee newEmployee;
     private JButton addEmployeeBtn;
 
-    public MainFrameTable(ArrayList<Employee> employees) {
+    public MainFrameTable(ArrayList<Employee> employees){
         super();
         setVisible(true);
         setTitle("Les Banquiers");
@@ -52,9 +49,9 @@ public class MainFrameTable extends JFrame {
         panel.add(scrollPane, BorderLayout.NORTH);
         this.addEmployeeBtn = new JButton("Ajouter un employee");
         panel.add(this.addEmployeeBtn, BorderLayout.SOUTH);
-        addEmployeeBtn.addActionListener(new ActionListener() {
+        addEmployeeBtn.addActionListener(new ActionListener(){
             @Override
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(ActionEvent e){
                 new AddEmployeeFrame(getThis()).setVisible(true);
             }
         });
@@ -66,17 +63,18 @@ public class MainFrameTable extends JFrame {
     }
 
 
-    public Employee getNewEmployee() {
+    public Employee getNewEmployee(){
         return newEmployee;
     }
 
-    public void setNewEmployee(Employee newEmployee) {
+    public void setNewEmployee(Employee newEmployee){
         System.out.println("Ajout de l'employé :\n" + newEmployee);
         this.newEmployee = newEmployee;
     }
 
-    public void refresh() {
-        model2 = new EmployeeTable();
-        table = new JTable(model2);
+    public void refresh() throws SQLException {
+        int row = FactoryDAO.getEmployeeDAO().getAllEmployee().size()-1;
+        model.fireTableRowsInserted(row, row);
+        table.repaint();
     }
 }
