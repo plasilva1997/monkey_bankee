@@ -37,7 +37,8 @@ public class MainFrameLogin extends JFrame {
 
                 try {
                     employee = FactoryDAO.getEmployeeDAO().getByLogin(email);
-                    if (hash.hashPassword(password).equals(employee.getPassword())) {
+                    String hashPasswordInput = hash.hashPassword(password);
+                    if (hashPasswordInput.equals(employee.getPassword())) {
                         System.out.println(" Bonjour " + employee.getEmployee_prenom() + " " + employee.getEmployee_nom());
                         JOptionPane.showMessageDialog(JPanelLogin, " Bonjour " + employee.getEmployee_prenom() + " " + employee.getEmployee_nom());
                     } else {
