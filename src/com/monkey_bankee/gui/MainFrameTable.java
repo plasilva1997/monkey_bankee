@@ -72,9 +72,6 @@ public class MainFrameTable extends JFrame {
         this.newEmployee = newEmployee;
     }
 
-    public void refresh() throws SQLException {
-        int row = FactoryDAO.getEmployeeDAO().getAllEmployee().size()-1;
-        model.fireTableRowsInserted(row, row);
-        table.repaint();
+    public void refresh(){
     }
 }

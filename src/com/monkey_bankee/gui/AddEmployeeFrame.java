@@ -115,11 +115,7 @@ public class AddEmployeeFrame extends JFrame {
                             e.printStackTrace();
                         }
                         mother.setNewEmployee(employee);
-                        try {
-                            mother.refresh();
-                        } catch (SQLException throwables) {
-                            throwables.printStackTrace();
-                        }
+                        mother.refresh();
                     } else {
                         JOptionPane.showMessageDialog(panel, "Les mots de passe ne sont pas identiques");
                         setVisible(true);
