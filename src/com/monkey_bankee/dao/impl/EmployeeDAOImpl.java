@@ -77,7 +77,7 @@ public class EmployeeDAOImpl extends DBUtil implements EmployeeDAO {
             if (rs.next()) {
                 employee = transformSqlToEmployee(rs);
             } else {
-                System.out.println("Mauvaise combination");
+                System.out.println("Mail n'existe pas");
             }
         } catch (SQLException throwables) {
 
@@ -137,6 +137,7 @@ public class EmployeeDAOImpl extends DBUtil implements EmployeeDAO {
         employee.setEmployee_prenom(rs.getString("firstname"));
         employee.setEmployee_ville(rs.getString("city_bank"));
         employee.setLogin(rs.getString("login"));
+        employee.setPassword(rs.getString("password"));
         employee.setEmployee_tel(rs.getString("tel"));
         employee.setCreated_at(rs.getTimestamp("created_at"));
 

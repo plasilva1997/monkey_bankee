@@ -4,6 +4,7 @@ import com.monkey_bankee.model.Client;
 import com.monkey_bankee.dao.ClientDAO;
 import com.monkey_bankee.util.DBUtil;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -48,6 +49,8 @@ public class ClientDAOImpl extends DBUtil implements ClientDAO {
             e.printStackTrace();
         }
     }
+
+
 
     @Override
     public ArrayList<Client> getAllClient() {

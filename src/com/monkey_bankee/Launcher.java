@@ -18,7 +18,7 @@ public class Launcher {
 
 
     //Ouverture de la fenetre SWING
-    /*public static void main(String[] args) throws ClassNotFoundException, UnsupportedLookAndFeelException, InstantiationException, IllegalAccessException, InvocationTargetException, InterruptedException {
+    public static void main(String[] args) throws ClassNotFoundException, UnsupportedLookAndFeelException, InstantiationException, IllegalAccessException, InvocationTargetException, InterruptedException {
         UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         SwingUtilities.invokeAndWait(new Runnable() {
             @Override
@@ -27,11 +27,11 @@ public class Launcher {
                 login.setVisible(true);
             }
         });
-    }*/
+    }
 
-    /*
+
     //Ouverture de la fenetre  Swing Add Employee
-
+/*
     public static void main(String[] args) throws ClassNotFoundException, UnsupportedLookAndFeelException, InstantiationException, IllegalAccessException, InvocationTargetException, InterruptedException {
         UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         SwingUtilities.invokeAndWait(new Runnable() {
@@ -43,7 +43,7 @@ public class Launcher {
         });
     }
 */
-
+/*
     //Ouverture de la fenetre  Swing Add Client
 
     public static void main(String[] args) throws ClassNotFoundException, UnsupportedLookAndFeelException, InstantiationException, IllegalAccessException, InvocationTargetException, InterruptedException {
@@ -56,7 +56,7 @@ public class Launcher {
             }
         });
     }
-
+*/
 
     /*public static void main(String... args) {
 
