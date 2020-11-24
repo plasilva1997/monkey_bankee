@@ -2,6 +2,7 @@ package com.monkey_bankee.gui;
 
 
 import com.monkey_bankee.dao.FactoryDAO;
+import com.monkey_bankee.model.Client;
 import com.monkey_bankee.model.Employee;
 import com.monkey_bankee.model.EmployeeTable;
 

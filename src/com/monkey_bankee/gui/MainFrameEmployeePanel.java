@@ -1,7 +1,6 @@
 package com.monkey_bankee.gui;
 
 import com.monkey_bankee.dao.FactoryDAO;
-import com.monkey_bankee.dao.HashDAO;
 import com.monkey_bankee.model.Client;
 import com.monkey_bankee.model.ClientTable;
 
@@ -22,6 +21,7 @@ public class MainFrameEmployeePanel extends JFrame {
     private JTable table1;
     private JButton actionsearch;
     private JPanel JPanelClient;
+    private JPanel JPanelTable;
     private ClientTable model;
 
 
@@ -51,7 +51,6 @@ public class MainFrameEmployeePanel extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-
                 this.clients = clients;
                 try {
                     initComponent();
@@ -64,9 +63,8 @@ public class MainFrameEmployeePanel extends JFrame {
                 clients = FactoryDAO.getClientDAO().getAllClient();
                 model = new ClientTable();
                 table1 = new JTable(model);
-                JScrollPane scrollPane = new JScrollPane(table1);
+                getContentPane().add(JPanelTable);
             }
-
         });
 
 
@@ -95,5 +93,9 @@ public class MainFrameEmployeePanel extends JFrame {
 
         });
 
+    }
+
+    private void createUIComponents() {
+        // TODO: place custom component creation code here
     }
 }
