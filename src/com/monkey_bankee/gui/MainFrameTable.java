@@ -32,6 +32,7 @@ public class MainFrameTable extends JFrame {
         setBounds(200, 200, 800, 600);
         setMinimumSize(new Dimension(300, 300));
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
         this.employees = employees;
         try {
             initComponent();
