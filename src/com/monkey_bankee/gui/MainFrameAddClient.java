@@ -33,7 +33,7 @@ public class MainFrameAddClient extends JFrame {
 
     public MainFrameAddClient() {
         add(JPanelAddClient);
-        setTitle("MonkeyBankee - Ajouter un client");
+        setTitle("MonkeyBankee | Ajouter un client");
         setSize(700, 800);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
@@ -92,8 +92,11 @@ public class MainFrameAddClient extends JFrame {
                         try {
 
                             FactoryDAO.getClientDAO().addClient(client);
-                            JOptionPane.showMessageDialog(JPanelAddClient, "Employé(e) ajouté(e)");
-                            setVisible(false);
+                            JOptionPane.showMessageDialog(JPanelAddClient, "Client(e) ajouté(e)");
+                            dispose();
+                            MainFrameEmployeePanel employeePanel = new MainFrameEmployeePanel();
+                            employeePanel.setVisible(true);
+
 
                         } catch (SQLException throwables) {
                             throwables.printStackTrace();

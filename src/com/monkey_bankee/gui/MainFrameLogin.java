@@ -23,7 +23,7 @@ public class MainFrameLogin extends JFrame {
     public MainFrameLogin() {
 
         add(JPanelLogin);
-        setTitle("MonkeyBankee");
+        setTitle("MonkeyBankee | Login");
         setSize(700, 800);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
@@ -46,8 +46,8 @@ public class MainFrameLogin extends JFrame {
                         System.out.println(" Bonjour " + employee.getEmployee_prenom() + " " + employee.getEmployee_nom());
                         JOptionPane.showMessageDialog(JPanelLogin, " Bonjour " + employee.getEmployee_prenom() + " " + employee.getEmployee_nom());
                         dispose();
-                        MainFrameAddEmployee addEmployee = new MainFrameAddEmployee();
-                        addEmployee.setVisible(true);
+                        MainFrameEmployeePanel employeePanel = new MainFrameEmployeePanel();
+                        employeePanel.setVisible(true);
 
                     } else {
                         System.out.println("Mot de passe ou Mail incorrecte");
