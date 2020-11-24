@@ -1,7 +1,6 @@
 package com.monkey_bankee.gui;
 
 import com.monkey_bankee.dao.FactoryDAO;
-import com.monkey_bankee.dao.HashDAO;
 import com.monkey_bankee.model.Client;
 import com.monkey_bankee.model.ClientTable;
 
@@ -11,6 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import javax.swing.JScrollPane;
 
 public class MainFrameEmployeePanel extends JFrame {
 
@@ -19,10 +19,11 @@ public class MainFrameEmployeePanel extends JFrame {
     private JButton action3Button;
     private JButton action4Button;
     private JTextField search;
-    private JTable table1;
     private JButton actionsearch;
     private JPanel JPanelClient;
     private ClientTable model;
+    private JTable table12;
+    private JScrollPane JscrollPanel5;
 
 
     public MainFrameEmployeePanel() {
@@ -47,26 +48,33 @@ public class MainFrameEmployeePanel extends JFrame {
 
         //show all clients of the bank
         action2Button.addActionListener(new ActionListener() {
-            private ArrayList<Client> clients;
+            private JPanel JPanelClient;
+            public ArrayList<Client> clients;
+
             @Override
             public void actionPerformed(ActionEvent e) {
 
-
-                this.clients = clients;
                 try {
                     initComponent();
+
                 } catch (SQLException throwables) {
                     throwables.printStackTrace();
                 }
             }
 
             private void initComponent() throws SQLException {
+                this.JPanelClient = new JPanel();
                 clients = FactoryDAO.getClientDAO().getAllClient();
                 model = new ClientTable();
-                table1 = new JTable(model);
-                JScrollPane scrollPane = new JScrollPane(table1);
-            }
+                table12 = new JTable(model);
+                table12.requestFocus();
+                JScrollPane scrollPane = new JScrollPane(table12);
+                JPanelClient.add(scrollPane);
 
+                getContentPane().add(JPanelClient);
+//                getContentPane().add(scrollPane);
+//                pack();
+            }
         });
 
 
@@ -79,7 +87,6 @@ public class MainFrameEmployeePanel extends JFrame {
                 addClient.setVisible(true);
 
             }
-
         });
 
 
@@ -92,7 +99,18 @@ public class MainFrameEmployeePanel extends JFrame {
                 addEmployee.setVisible(true);
 
             }
+        });
 
+
+        //Add employee
+        actionsearch.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                MainFrameAddEmployee addEmployee = new MainFrameAddEmployee();
+                addEmployee.setVisible(true);
+
+            }
         });
 
     }

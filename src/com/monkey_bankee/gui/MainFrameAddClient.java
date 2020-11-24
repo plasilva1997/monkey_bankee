@@ -30,12 +30,25 @@ public class MainFrameAddClient extends JFrame {
     private JTextField regularIncome;
     private JTextField regularSpending;
     private JTextField sub;
+    private JButton retourButton;
 
     public MainFrameAddClient() {
         add(JPanelAddClient);
         setTitle("MonkeyBankee | Ajouter un client");
         setSize(700, 800);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
+        //retourn
+        retourButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                MainFrameEmployeePanel employeePanel = new MainFrameEmployeePanel();
+                employeePanel.setVisible(true);
+
+            }
+
+        });
 
         register.addActionListener(new ActionListener() {
 
