@@ -7,9 +7,11 @@ import com.monkey_bankee.model.Employee;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Array;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
 
 public class MainFrameLogin extends JFrame {
     private JPanel JPanelLogin;
@@ -34,7 +36,8 @@ public class MainFrameLogin extends JFrame {
 
 
                 String email = LoginTextField.getText();
-                String password = String.valueOf(passwordField.getPassword());;
+                String password = String.valueOf(passwordField.getPassword());
+
 
                 try {
                     employee = FactoryDAO.getEmployeeDAO().getByLogin(email);
@@ -42,11 +45,9 @@ public class MainFrameLogin extends JFrame {
                     if (hashPasswordInput.equals(employee.getPassword())) {
                         System.out.println(" Bonjour " + employee.getEmployee_prenom() + " " + employee.getEmployee_nom());
                         JOptionPane.showMessageDialog(JPanelLogin, " Bonjour " + employee.getEmployee_prenom() + " " + employee.getEmployee_nom());
-
                         dispose();
                         MainFrameAddEmployee addEmployee = new MainFrameAddEmployee();
                         addEmployee.setVisible(true);
-
 
                     } else {
                         System.out.println("Mot de passe ou Mail incorrecte");
@@ -55,9 +56,7 @@ public class MainFrameLogin extends JFrame {
                 } catch (Exception exception) {
                     exception.printStackTrace();
                 }
-
             }
-
         });
     }
 }
