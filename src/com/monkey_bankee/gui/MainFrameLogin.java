@@ -22,7 +22,7 @@ public class MainFrameLogin extends JFrame {
 
         add(JPanelLogin);
         setTitle("MonkeyBankee | Login");
-        setSize(700, 800);
+        setSize(1920, 760);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         connectButton.addActionListener(new ActionListener() {

@@ -1,15 +1,10 @@
 package com.monkey_bankee.gui;
 
-import com.monkey_bankee.dao.FactoryDAO;
-import com.monkey_bankee.model.Client;
 import com.monkey_bankee.model.ClientTable;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import javax.swing.JScrollPane;
 
 public class MainFrameEmployeePanel extends JFrame {
@@ -24,6 +19,9 @@ public class MainFrameEmployeePanel extends JFrame {
     private ClientTable model;
     private JTable table12;
     private JScrollPane JscrollPanel5;
+    private JPanel monPanel;
+    private JButton action5Button;
+    private JPanel JPanel13;
 
 
     public MainFrameEmployeePanel() {
@@ -31,7 +29,7 @@ public class MainFrameEmployeePanel extends JFrame {
         setVisible(true);
         add(JPanelClient);
         setTitle("MonkeyBankee | Panel");
-        setSize(700, 800);
+        setSize(1000, 760);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
 
@@ -44,8 +42,21 @@ public class MainFrameEmployeePanel extends JFrame {
 
         });
 
+        //Show table our clients
+        action2Button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                MainFrameTableEmployee tableClient = new MainFrameTableEmployee();
+                tableClient.setVisible(true);
 
 
+            }
+
+        });
+
+
+/*
         //show all clients of the bank
         action2Button.addActionListener(new ActionListener() {
             private JPanel JPanelClient;
@@ -63,20 +74,26 @@ public class MainFrameEmployeePanel extends JFrame {
             }
 
             private void initComponent() throws SQLException {
+
                 this.JPanelClient = new JPanel();
                 clients = FactoryDAO.getClientDAO().getAllClient();
                 model = new ClientTable();
-                table12 = new JTable(model);
+                JTable table12 = new JTable(model);
                 table12.requestFocus();
-                JScrollPane scrollPane = new JScrollPane(table12);
-                JPanelClient.add(scrollPane);
+                table12.setBackground(Color.yellow);
 
-                getContentPane().add(JPanelClient);
-//                getContentPane().add(scrollPane);
-//                pack();
+                //JPanel13.add(table12);
+                JPanel13.repaint();
+                monPanel.add(JPanel13);
+
+                //repaint();
+               //revalidate();
+
+
+
             }
         });
-
+*/
 
         //Add client
         action3Button.addActionListener(new ActionListener() {
