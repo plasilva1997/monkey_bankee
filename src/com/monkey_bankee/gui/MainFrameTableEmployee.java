@@ -43,6 +43,7 @@ public class MainFrameTableEmployee extends JFrame {
         employees = FactoryDAO.getEmployeeDAO().getAllEmployee();
         model = new EmployeeTable();
         table = new JTable(model);
+        table.setOpaque(false);
         JScrollPane scrollPane = new JScrollPane(table);
         panel.add(scrollPane, BorderLayout.NORTH);
         this.returnbutton = new JButton("Retour");

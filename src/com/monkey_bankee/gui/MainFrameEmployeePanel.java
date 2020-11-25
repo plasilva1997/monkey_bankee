@@ -37,7 +37,9 @@ public class MainFrameEmployeePanel extends JFrame {
         action1Button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                dispose();
+                MainFrameTableEmployee tableClient = new MainFrameTableEmployee();
+                tableClient.setVisible(true);
             }
 
         });
@@ -46,9 +48,7 @@ public class MainFrameEmployeePanel extends JFrame {
         action2Button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                dispose();
-                MainFrameTableEmployee tableClient = new MainFrameTableEmployee();
-                tableClient.setVisible(true);
+
 
 
             }
