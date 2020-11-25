@@ -16,13 +16,15 @@ public class MainFrameLogin extends JFrame {
     private JTextField LoginTextField;
     private JPasswordField passwordField;
     private JButton connectButton;
+    private JButton exit;
 
 
     public MainFrameLogin() {
 
         add(JPanelLogin);
         setTitle("MonkeyBankee | Login");
-        setSize(1920, 760);
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
+        setUndecorated(true);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         connectButton.addActionListener(new ActionListener() {
@@ -58,6 +60,14 @@ public class MainFrameLogin extends JFrame {
 
             }
 
+
+        });
+
+        exit.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0);
+            }
         });
     }
 }

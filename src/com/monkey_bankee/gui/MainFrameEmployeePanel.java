@@ -22,24 +22,25 @@ public class MainFrameEmployeePanel extends JFrame {
     private JPanel monPanel;
     private JButton action5Button;
     private JPanel JPanel13;
+    private JButton exit;
 
 
     public MainFrameEmployeePanel() {
-        super();
-        setVisible(true);
+
+
         add(JPanelClient);
         setTitle("MonkeyBankee | Panel");
-        setSize(1000, 760);
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
+        setUndecorated(true);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
 
 
         //Show table our clients
         action1Button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                dispose();
-                MainFrameTableEmployee tableClient = new MainFrameTableEmployee();
-                tableClient.setVisible(true);
+
             }
 
         });
@@ -49,7 +50,9 @@ public class MainFrameEmployeePanel extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-
+                dispose();
+                MainFrameTableClient tableClient = new MainFrameTableClient();
+                tableClient.setVisible(true);
 
             }
 
@@ -118,6 +121,17 @@ public class MainFrameEmployeePanel extends JFrame {
             }
         });
 
+        //Add employee
+        action5Button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                MainFrameTableEmployee tableEmployee = new MainFrameTableEmployee();
+                tableEmployee.setVisible(true);
+
+            }
+        });
+
 
         //Add employee
         actionsearch.addActionListener(new ActionListener() {
@@ -127,6 +141,13 @@ public class MainFrameEmployeePanel extends JFrame {
                 MainFrameAddEmployee addEmployee = new MainFrameAddEmployee();
                 addEmployee.setVisible(true);
 
+            }
+        });
+
+        exit.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0);
             }
         });
 

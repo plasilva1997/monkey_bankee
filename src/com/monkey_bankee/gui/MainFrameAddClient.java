@@ -35,7 +35,8 @@ public class MainFrameAddClient extends JFrame {
     public MainFrameAddClient() {
         add(JPanelAddClient);
         setTitle("MonkeyBankee | Ajouter un client");
-        setSize(700, 800);
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
+        setUndecorated(true);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
 

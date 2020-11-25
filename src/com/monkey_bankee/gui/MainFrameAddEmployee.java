@@ -34,7 +34,8 @@ public class MainFrameAddEmployee extends JFrame {
     public MainFrameAddEmployee() {
         add(JPanelAdd);
         setTitle("MonkeyBankee | Ajouter Un Employee");
-        setSize(700, 800);
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
+        setUndecorated(true);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         //retourn

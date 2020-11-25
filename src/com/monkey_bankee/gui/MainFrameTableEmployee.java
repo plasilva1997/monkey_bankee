@@ -22,12 +22,10 @@ public class MainFrameTableEmployee extends JFrame {
 
 
     public MainFrameTableEmployee() {
-        super();
-        setVisible(true);
-        setTitle("Les Banquiers");
-        setBounds(200, 200, 800, 600);
-        setMinimumSize(new Dimension(300, 300));
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setTitle("MonkeyBankee | Employées");
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
+        setUndecorated(true);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         this.employees = employees;
         try {
